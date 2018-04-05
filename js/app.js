@@ -5,6 +5,8 @@ let card = document.getElementsByClassName("card");
 let allCards = [...card]
 console.log(allCards);
 const board = document.getElementById("board");
+let opened = [];
+const matched = document.getElementsByClassName("match");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -59,4 +61,33 @@ const show = function() {
 for (var i = 0; i < allCards.length; i++) {
     card = allCards[i];
     card.addEventListener("click", show);
+    card.addEventListener("click", choose);
+}
+
+function choose() {
+    opened.push(this);
+    const pair = opened.length;
+    if (pair === 2) {
+        if (opened[0].type === opened[1].type) {
+            doMatch();
+        } else {
+            doNotMatch();
+        }
+    }
+}
+
+function doMatch() {
+    opened[0].classList.add("match");
+    opened[1].classList.add("match");
+    opened[0].classList.remove("open", "show");
+    opened[1].classList.remove("open", "show");
+    opened = [];
+}
+
+function doNotMatch() {
+    setTimeout(function() {
+        opened[0].classList.remove("open", "show");
+        opened[1].classList.remove("open", "show");
+        opened = [];
+    }, 300);
 }
