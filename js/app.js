@@ -47,6 +47,8 @@ function start() {
         });
         allCards[i].classList.remove("show", "open", "match"); // remove the listed classes to clear the gameboard
     }
+    moves = 0;
+    counter.innerHTML = moves;
 }
 
 /*
