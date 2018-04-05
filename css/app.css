@@ -107,3 +107,12 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* Show results of the game */
+.display-board {
+    visibility: hidden;
+}
+
+.show-results {
+    visibility: visible;
+}

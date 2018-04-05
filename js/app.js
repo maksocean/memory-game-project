@@ -14,6 +14,7 @@ const time = document.querySelector(".time");
 let minute = 0;
 let second = 0;
 const restart = document.querySelector(".restart");
+const modal = document.getElementById("scoreboard");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -71,6 +72,7 @@ for (var i = 0; i < allCards.length; i++) {
     card = allCards[i];
     card.addEventListener("click", show);
     card.addEventListener("click", choose);
+    card.addEventListener("click", finalScore); // activate the final scoreboard when all cards have matched
 }
 
 function choose() {
@@ -110,9 +112,11 @@ function movesCounter() {
     }
     if (moves > 5) {
         document.getElementById("star1").style.color = "#f2f2f2";
+        document.getElementById("star3-2").style.visibility = "collapse"; // for the final scoreboard
     }
     if (moves > 10) {
         document.getElementById("star2").style.color = "#f2f2f2";
+        document.getElementById("star2-2").style.visibility = "collapse";
     }
 }
 
@@ -142,4 +146,14 @@ function starColor() {
     document.getElementById("star1").style.color = "#E9C77B";
     document.getElementById("star2").style.color = "#E9C77B";
     document.getElementById("star3").style.color = "#E9C77B";
+}
+
+function finalScore() {
+    if (matched.length == 16) {
+        clearInterval(interval);
+        timeFix = time.innerHTML;
+        document.getElementById("final-moves").innerHTML = moves;
+        document.getElementById("final-time").innerHTML = timeFix;
+        modal.classList.add("show-results");
+    }
 }
