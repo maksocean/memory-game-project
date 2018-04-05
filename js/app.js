@@ -9,6 +9,10 @@ let opened = [];
 const matched = document.getElementsByClassName("match");
 let moves = 0;
 const counter = document.querySelector(".moves");
+let interval;
+const time = document.querySelector(".time");
+let minute = 0;
+let second = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -98,10 +102,24 @@ function doNotMatch() {
 function movesCounter() {
     moves++;
     counter.innerHTML = moves;
+    if (moves == 1) {
+        startTimer();
+    }
     if (moves > 5) {
         document.getElementById("star1").style.color = "#f2f2f2";
-      }
-      if (moves > 10) {
+    }
+    if (moves > 10) {
         document.getElementById("star2").style.color = "#f2f2f2";
-      }
+    }
+}
+
+function startTimer() {
+    interval = setInterval(function() {
+        time.innerHTML = minute + "m " + second + "s";
+        second++;
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+    }, 1000);
 }
