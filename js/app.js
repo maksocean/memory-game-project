@@ -98,4 +98,10 @@ function doNotMatch() {
 function movesCounter() {
     moves++;
     counter.innerHTML = moves;
+    if (moves > 5) {
+        document.getElementById("star1").style.color = "#f2f2f2";
+      }
+      if (moves > 10) {
+        document.getElementById("star2").style.color = "#f2f2f2";
+      }
 }
