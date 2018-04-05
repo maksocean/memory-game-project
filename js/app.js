@@ -1,8 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
-
-
+let card = document.getElementsByClassName("card");
+let allCards = [...card]
+console.log(allCards);
+const board = document.getElementById("board");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,6 +27,18 @@ function shuffle(array) {
     return array;
 }
 
+document.body.onload = start();
+
+function start() {
+    allCards = shuffle(allCards);
+    for (var i = 0; i < allCards.length; i++) {
+        board.innerHTML = "";
+        Array.prototype.forEach.call(allCards, function(item) {
+            board.appendChild(item);
+        });
+        allCards[i].classList.remove("show", "open", "match"); // remove the listed classes to clear the gameboard
+    }
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
