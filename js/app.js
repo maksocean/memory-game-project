@@ -15,6 +15,8 @@ let minute = 0;
 let second = 0;
 const restart = document.querySelector(".restart");
 const modal = document.getElementById("scoreboard");
+const playmore = document.querySelector(".playmore");
+const quit = document.querySelector(".quit");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -134,6 +136,7 @@ function startTimer() {
 restart.addEventListener("click", start);
 restart.addEventListener("click", resetTime);
 restart.addEventListener("click", starColor);
+restart.addEventListener("click", playAgain);
 
 function resetTime() {
     clearInterval(interval);
@@ -157,3 +160,19 @@ function finalScore() {
         modal.classList.add("show-results");
     }
 }
+
+/* Buttons */
+function playAgain() { 
+    modal.classList.remove("show-results");
+}
+
+playmore.addEventListener("click", start); // "Play Again!" button
+playmore.addEventListener("click", resetTime);
+playmore.addEventListener("click", starColor);
+playmore.addEventListener("click", playAgain);
+
+function quitGame() {
+    modal.classList.remove("show-results");
+}
+
+quit.addEventListener("click", quitGame); // "I'm off!" button (just closes the scoreboard)
