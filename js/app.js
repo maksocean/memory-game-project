@@ -7,6 +7,8 @@ console.log(allCards);
 const board = document.getElementById("board");
 let opened = [];
 const matched = document.getElementsByClassName("match");
+let moves = 0;
+const counter = document.querySelector(".moves");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -86,8 +88,14 @@ function doMatch() {
 
 function doNotMatch() {
     setTimeout(function() {
+        movesCounter();
         opened[0].classList.remove("open", "show");
         opened[1].classList.remove("open", "show");
         opened = [];
     }, 300);
+}
+
+function movesCounter() {
+    moves++;
+    counter.innerHTML = moves;
 }
