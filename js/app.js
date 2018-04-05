@@ -13,6 +13,7 @@ let interval;
 const time = document.querySelector(".time");
 let minute = 0;
 let second = 0;
+const restart = document.querySelector(".restart");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -122,4 +123,21 @@ function startTimer() {
             second = 0;
         }
     }, 1000);
+}
+
+restart.addEventListener("click", start);
+restart.addEventListener("click", resetTime);
+restart.addEventListener("click", starColor);
+
+function resetTime() {
+    clearInterval(interval);
+    second = 0;
+    minute = 0;
+    time.innerHTML = "0m 0s";
+}
+
+function starColor() {
+    document.getElementById("star1").style.color = "#E9C77B";
+    document.getElementById("star2").style.color = "#E9C77B";
+    document.getElementById("star3").style.color = "#E9C77B";
 }
