@@ -52,6 +52,7 @@ function start() {
     }
     moves = 0;
     counter.innerHTML = moves;
+    time.innerHTML = "0m 0s";
 }
 
 /*
