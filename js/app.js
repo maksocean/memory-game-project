@@ -88,6 +88,7 @@ function choose() {
             doNotMatch();
         }
     }
+    startTimer();
 }
 
 function doMatch() {
@@ -110,9 +111,6 @@ function doNotMatch() {
 function movesCounter() {
     moves++;
     counter.innerHTML = moves;
-    if (moves == 1) {
-        startTimer();
-    }
     if (moves > 5) {
         document.getElementById("star1").style.color = "#f2f2f2";
         document.getElementById("star3-2").style.visibility = "collapse"; // for the final scoreboard
@@ -132,6 +130,7 @@ function startTimer() {
             second = 0;
         }
     }, 1000);
+    startTimer = function() {};
 }
 
 restart.addEventListener("click", start);
