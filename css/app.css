@@ -72,6 +72,7 @@ ul li {
     transform: rotateY(0);
     background: #e2b49a;
     cursor: default;
+    pointer-events: none;
 }
 
 .deck .card.show {
