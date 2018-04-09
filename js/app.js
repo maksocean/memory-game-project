@@ -92,6 +92,7 @@ function choose() {
 }
 
 function doMatch() {
+    movesCounter();
     opened[0].classList.add("match");
     opened[1].classList.add("match");
     opened[0].classList.remove("open", "show");
